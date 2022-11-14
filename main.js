@@ -14,22 +14,6 @@ const alice2 = document.querySelector("#alice2");
 const alice3 = document.querySelector("#alice3");
 
 
-
-function doStep1(callback) {
-  const result = alice1.animate(aliceTumbling, aliceTiming);
-  callback(result.finished);
-}
-
-function doStep2(callback) {
-  const result = alice2.animate(aliceTumbling, aliceTiming);
-  callback(result.finished);
-}
-
-function doStep3(callback) {
-  const result = alice3.animate(aliceTumbling, aliceTiming);
-  callback(result.finished);
-}
-
 const anime1Promise = alice1.animate(aliceTumbling, aliceTiming).finished;
 
 anime1Promise.then((response) => {
