@@ -30,14 +30,15 @@ function doStep3(callback) {
   callback(result.finished);
 }
 
-function doOperation() {
-  alice1.animate(aliceTumbling, aliceTiming).finished.then(() => {
-    alice2.animate(aliceTumbling, aliceTiming).finished.then(() => {
-      alice3.animate(aliceTumbling, aliceTiming).finished.then(() => {
-        doOperation();
-      });
-    });
+const anime1Promise = alice1.animate(aliceTumbling, aliceTiming).finished;
+
+anime1Promise.then((response) => {
+  console.log('Step 1 done');
+  const anime2Promise = alice2.animate(aliceTumbling, aliceTiming).finished;
+  anime2Promise.then((response) => {
+    console.log('Step 1 done');
+    const anime3Promise = alice3.animate(aliceTumbling, aliceTiming).finished;
   });
-};
+});
 
 doOperation();
